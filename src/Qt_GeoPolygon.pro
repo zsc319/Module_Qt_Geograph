@@ -1,5 +1,4 @@
 QT += core gui
-
 CONFIG += c++11
 
 TARGET = Qt_GeoPolygon

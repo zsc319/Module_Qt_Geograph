@@ -78,10 +78,20 @@ bool MyQtGeoPolygon:: insertNewPointsIntoGeoPoints()
 //根据180度经度线将点划分为两部分，分别组成多个多边形，然后再使用united方法合并
 bool MyQtGeoPolygon::splitPointsBy180DegreeLongitudeAndDivideIntoMultiPolygons()
 {
+    QVectorIterator <QPointF> i(geoPointsInDegrees);
+    QVector <QPointF> vectorPointFPositiveLongitude,vectorPointFNonPositiveLongitude;
+    while (i.hasNext())
+    {
+        QPointF pointF =i.next();
+        if(pointF.x()>0)
+            vectorPointFPositiveLongitude.append(pointF);
+        else
+            vectorPointFNonPositiveLongitude.append(pointF);
+    }
 
-
-
-
+    QPolygonF polygonFPositiveLongitude(vectorPointFPositiveLongitude),polygonFNonPositiveLongitude(vectorPointFNonPositiveLongitude);
+    polyGonF=polygonFNonPositiveLongitude.united(polygonFPositiveLongitude);
+    return true;
 }
 
 bool MyQtGeoPolygon::checkPointFValidity(QPointF &pointF)
