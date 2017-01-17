@@ -3,14 +3,16 @@
 
 #include <QObject>
 #include <QPolygonF>
+#include "MyQtGeoShapeBase.h"
 
-class MyQtGeoPolygon : public QObject
+class MyQtGeoPolygon : public MyQtGeoShapeBase
 {
     Q_OBJECT
 public:
-    // use x to represent longitude, y to represent longitude
+    // use x to represent longitude, y to represent latitude.
+    // Note the difference from QGeoCoordinate: first parameter is latitude, second parameter is longitude.
     explicit MyQtGeoPolygon(QVector<QPointF> paramGeoPointsInDegreesBeforeTranslate, bool *ok,QObject *parent = 0);
-    bool containsPoint(QPointF pointF, Qt::FillRule fillRule=Qt::OddEvenFill) ;
+    virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
 
     QPolygonF getPolygonFTranslated() const;
     QVector<QPointF> getGeoPointsInDegreesBeforeTranslate() const;
@@ -19,7 +21,7 @@ signals:
 
 public slots:
 
-private:
+protected:
     bool setIs180LongitudeCrossedAndCheckPointsValidity();
     bool translatePointsWhenNeeded();
     bool checkPointFValidity(QPointF &pointF);

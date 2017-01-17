@@ -1,8 +1,9 @@
-#include "myqtgeopolygon.h"
+#include "MyQtGeoPolygon.h"
 #include <QDebug>
 #include <QLineF>
 
-MyQtGeoPolygon::MyQtGeoPolygon(QVector<QPointF> paramGeoPointsInDegreesBeforeTranslate, bool *ok, QObject *parent) : QObject(parent)
+MyQtGeoPolygon::MyQtGeoPolygon(QVector<QPointF> paramGeoPointsInDegreesBeforeTranslate, bool *ok, QObject *parent)
+    : MyQtGeoShapeBase(parent)
 {
     this->geoPointsInDegreesBeforeTranslate=paramGeoPointsInDegreesBeforeTranslate;
     this->geoPointsInDegreeAfterTranslate=paramGeoPointsInDegreesBeforeTranslate;
@@ -66,14 +67,18 @@ bool MyQtGeoPolygon::setIs180LongitudeCrossedAndCheckPointsValidity()
         {
             lastPointF=i.next();
             if(!checkPointFValidity(lastPointF))
+            {
                 return false;
+             }
             isLastPointValid=true;
         }
         else
         {
             QPointF currentPoint=i.next();
             if(!checkPointFValidity(currentPoint))
+            {
                 return false;
+            }
             if(currentPoint.x()*lastPointF.x()<0) //one positive longitude, one negative longitude
             {
                 QLineF lineF(lastPointF,currentPoint);
@@ -87,10 +92,16 @@ bool MyQtGeoPolygon::setIs180LongitudeCrossedAndCheckPointsValidity()
     }
     return true;
 }
-bool MyQtGeoPolygon::containsPoint( QPointF pointF, Qt::FillRule fillRule)
+
+bool MyQtGeoPolygon::containsPoint( QGeoCoordinate geoCoordinate, Qt::FillRule fillRule)
 {
+    if(!geoCoordinate.isValid())
+        qDebug()<<"Error: invalid geoCooridinate:"<<geoCoordinate;
+    QPointF pointF(geoCoordinate.longitude(),geoCoordinate.latitude());
+
     if(pointF.x()<0&&is180LongitudeCrossed)
         pointF.setX(pointF.x()+360);
+
     return polygonFTranslated.containsPoint(pointF,fillRule);
 }
 
