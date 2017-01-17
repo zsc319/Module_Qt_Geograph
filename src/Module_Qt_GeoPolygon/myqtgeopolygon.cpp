@@ -28,7 +28,8 @@ MyQtGeoPolygon::MyQtGeoPolygon(QVector<QPointF> paramGeoPointsInDegreesBeforeTra
         *ok=false;
         return;
     }
-    polygonFTranslated.append(geoPointsInDegreeAfterTranslate);
+
+    polygonFTranslated=geoPointsInDegreeAfterTranslate;
 }
 
 bool MyQtGeoPolygon:: translatePointsWhenNeeded()
