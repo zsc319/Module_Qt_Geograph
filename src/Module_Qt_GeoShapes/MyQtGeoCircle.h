@@ -8,7 +8,7 @@
 class MyQtGeoCircle : public MyQtGeoShapeBase
 {
 public:
-    MyQtGeoCircle(const QGeoCoordinate &center, qreal radiusInMeters,bool *ok,QObject *parent = 0);
+    explicit MyQtGeoCircle(const QGeoCoordinate &center, qreal radiusInMeters,bool *ok,QObject *parent = 0);
     virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
 
     QGeoCircle getGeoCircle() const;
