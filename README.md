@@ -35,6 +35,7 @@ void setGeoCircle(const QGeoCircle &value);
 ```  
 
 ## 使用示例  
+```C++
 QGeoCoordinate coorBottomLeft(10,160);
 QGeoCoordinate coorUpperRight(40,-160);
 MyQtGeoRectangle *myGeoRect=new MyQtGeoRectangle (coorBottomLeft,coorUpperRight,&ok);
@@ -42,3 +43,4 @@ qDebug()<<myGeoRect->getGeoRectangle().bottomLeft()<<myGeoRect->getGeoRectangle(
 MyQtGeoShapeBase *myShape=myGeoRect;
 QGeoCoordinate pFTestb(20,180);
 qDebug()<<myShape->containsPoint(pFTestb);
+```
