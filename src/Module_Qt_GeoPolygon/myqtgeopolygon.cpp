@@ -2,11 +2,13 @@
 #include <QDebug>
 #include <QLineF>
 
-MyQtGeoPolygon::MyQtGeoPolygon(QVector<QPointF> geoPointsInDegreesParam, bool *ok, QObject *parent) : QObject(parent)
+MyQtGeoPolygon::MyQtGeoPolygon(QVector<QPointF> paramGeoPointsInDegreesBeforeTranslate, bool *ok, QObject *parent) : QObject(parent)
 {
-    this->geoPointsInDegrees=geoPointsInDegreesParam;
-    QPolygonF polygonFTest(geoPointsInDegreesParam);
-    if(!polygonFTest.isClosed())
+    this->geoPointsInDegreesBeforeTranslate=paramGeoPointsInDegreesBeforeTranslate;
+    this->geoPointsInDegreeAfterTranslate=paramGeoPointsInDegreesBeforeTranslate;
+    is180LongitudeCrossed=false;
+    QPolygonF polygonFTest(paramGeoPointsInDegreesBeforeTranslate);
+    if(  !polygonFTest.isClosed())
     {
         qDebug()<<"Error: polygon is not closed! Make sure that starting point and ending point are the same!";
        *ok=false;
@@ -18,20 +20,43 @@ MyQtGeoPolygon::MyQtGeoPolygon(QVector<QPointF> geoPointsInDegreesParam, bool *o
         *ok=false;
         return;
     }
-    if(insertNewPointsIntoGeoPoints())
+
+    if(setIs180LongitudeCrossedAndCheckPointsValidity()&&translatePointsWhenNeeded())
         *ok=true;
     else
+    {
         *ok=false;
-
-
+        return;
+    }
+    polygonFTranslated.append(geoPointsInDegreeAfterTranslate);
 }
 
-bool MyQtGeoPolygon:: insertNewPointsIntoGeoPoints()
+bool MyQtGeoPolygon:: translatePointsWhenNeeded()
 {
-    QPointF southPole(180,-90),northPole(180,90);
-    QLineF lineF180DegreeLongitude(southPole,northPole); //longitude of the degree 180 degrees
+    if(is180LongitudeCrossed)
+    {
+        QMutableVectorIterator <QPointF> i(geoPointsInDegreeAfterTranslate);
+        QPointF  pointF;
+        while (i.hasNext())
+        {
+            pointF=i.next();
+            if(pointF.x()<0)
+            {
+                pointF.setX(360+pointF.x());
+                i.setValue(pointF);
+            }
+        }
+    }
 
-    QMutableVectorIterator <QPointF> i(geoPointsInDegrees);
+    return true;
+}
+
+bool MyQtGeoPolygon::setIs180LongitudeCrossedAndCheckPointsValidity()
+{
+    //QPointF southPole(180,-90),northPole(180,90);
+  //  QLineF lineF180DegreeLongitude(southPole,northPole); //longitude of the degree 180 degrees
+
+    QVectorIterator <QPointF> i(geoPointsInDegreesBeforeTranslate);
     QPointF lastPointF;
     bool isLastPointValid=false;
     while (i.hasNext())
@@ -42,7 +67,6 @@ bool MyQtGeoPolygon:: insertNewPointsIntoGeoPoints()
             if(!checkPointFValidity(lastPointF))
                 return false;
             isLastPointValid=true;
-
         }
         else
         {
@@ -54,44 +78,19 @@ bool MyQtGeoPolygon:: insertNewPointsIntoGeoPoints()
                 QLineF lineF(lastPointF,currentPoint);
                 if(lineF.dx()>180) //180 degree crossed
                 {
-                    if(currentPoint.x()<0)
-                    {
-                        currentPoint.setX(currentPoint.x()+360);
-                    }
-                    else if(lastPointF.x()<0)
-                    {
-                        lastPointF.setX(lastPointF.x()+360);
-                    }
-                    lineF.setPoints(lastPointF,currentPoint);
-                    QPointF intersecPointF;
-                    if(lineF.intersect(lineF180DegreeLongitude, &intersecPointF)==QLineF::BoundedIntersection)
-                    {
-                        i.insert(intersecPointF);
-                    }
+                    is180LongitudeCrossed=true;
                 }
             }
+            lastPointF=currentPoint;
         }
     }
-    return splitPointsBy180DegreeLongitudeAndDivideIntoMultiPolygons();
-}
-
-//根据180度经度线将点划分为两部分，分别组成多个多边形，然后再使用united方法合并
-bool MyQtGeoPolygon::splitPointsBy180DegreeLongitudeAndDivideIntoMultiPolygons()
-{
-    QVectorIterator <QPointF> i(geoPointsInDegrees);
-    QVector <QPointF> vectorPointFPositiveLongitude,vectorPointFNonPositiveLongitude;
-    while (i.hasNext())
-    {
-        QPointF pointF =i.next();
-        if(pointF.x()>0)
-            vectorPointFPositiveLongitude.append(pointF);
-        else
-            vectorPointFNonPositiveLongitude.append(pointF);
-    }
-
-    QPolygonF polygonFPositiveLongitude(vectorPointFPositiveLongitude),polygonFNonPositiveLongitude(vectorPointFNonPositiveLongitude);
-    polyGonF=polygonFNonPositiveLongitude.united(polygonFPositiveLongitude);
     return true;
+}
+bool MyQtGeoPolygon::containsPoint( QPointF pointF, Qt::FillRule fillRule)
+{
+    if(pointF.x()<0&&is180LongitudeCrossed)
+        pointF.setX(pointF.x()+360);
+    return polygonFTranslated.containsPoint(pointF,fillRule);
 }
 
 bool MyQtGeoPolygon::checkPointFValidity(QPointF &pointF)
@@ -104,7 +103,18 @@ bool MyQtGeoPolygon::checkPointFValidity(QPointF &pointF)
     return true;
 }
 
-QPolygonF MyQtGeoPolygon::getPolyGonF() const
+QVector<QPointF> MyQtGeoPolygon::getGeoPointsInDegreeAfterTranslate() const
 {
-    return polyGonF;
+    return geoPointsInDegreeAfterTranslate;
 }
+
+QVector<QPointF> MyQtGeoPolygon::getGeoPointsInDegreesBeforeTranslate() const
+{
+    return geoPointsInDegreesBeforeTranslate;
+}
+
+QPolygonF MyQtGeoPolygon::getPolygonFTranslated() const
+{
+    return polygonFTranslated;
+}
+
