@@ -10,7 +10,6 @@
 
 ![横跨国际日期变更线的多边形区域](http://git.oschina.net/uploads/images/2017/0118/215338_69f64e39_854788.png "多边形区域")  
 
-
 ## 基类接口  
 ```C++  
 virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
