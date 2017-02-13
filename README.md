@@ -1,5 +1,5 @@
-#Qt_GeoShapes
-## 功能  
+#Qt_Geography
+## 功能1:地理多边形  
 封装Qt的QGeoCircle、QGeoRectangle和QPolygonF类，成为地理多边形、地理圆形和地理矩形，共同的基类为MyQtGeoShapeBase。  
 提供一个常用功能：查询某个坐标是否在某个地理形状内。  
 当从西向东运动的时候，经度值逐渐增大，直到东经180度后突变为-180度（西经用复数表示），然后再逐渐增长到-179度，-178度，以此类推。当一个空间区域跨东经180度的时候，进行特殊处理，判断覆盖范围。下图是地球上的经度划分：  
@@ -9,6 +9,10 @@
 如下图所示，是一个横跨180度经度线的多边形区域，绿色点是海上的目标。通过提供的GeoShapes库，可以生成多边形空间对象，判断某个坐标点是否在该多边形内。  
 
 ![横跨国际日期变更线的多边形区域](http://git.oschina.net/uploads/images/2017/0118/215338_69f64e39_854788.png "多边形区域")  
+
+## 功能2:空间距离计算及日出日落计算  
+- 计算两个经纬度间的距离（greatcircle）    
+- 计算给定经纬度给定日期的日出日落时间  
 
 ## 基类接口  
 ```C++  
@@ -42,6 +46,14 @@ virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Q
 QGeoCircle getGeoCircle() const;
 void setGeoCircle(const QGeoCircle &value);
 ```  
+
+## Geography接口  
+```C++
+static  qreal GetDistance(double lat1, double lng1, double lat2, double lng2);
+static  qreal GetAzimuth(double lat1, double lng1, double lat2, double lng2);
+static  float calculateSunriseAsUTCHour(int year, int month, int day, float lat, float lng);
+static  float calculateSunsetAsUTCHour(int year, int month, int day, float lat, float lng);
+```
 
 ## 使用示例  
 构造一个跨过东经180度线的矩形，然后判断(20,180)这一个点是否在区域内。
