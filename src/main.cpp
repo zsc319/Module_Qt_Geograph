@@ -1,7 +1,7 @@
 #include <QCoreApplication>
 #include <QDebug>
-#include "Module_Qt_GeoShapes/MyQtGeoPolygon.h"
-#include "Module_Qt_GeoShapes/MyQtGeoRectangle.h"
+#include "MyQtGeoPolygon.h"
+#include "MyQtGeoRectangle.h"
 #include <QGeoCoordinate>
 int main(int argc, char *argv[])
 {

@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QGeoCircle>
-#include <Module_Qt_GeoShapes/MyQtGeoShapeBase.h>
+#include <MyQtGeoShapeBase.h>
 
 class MyQtGeoCircle : public MyQtGeoShapeBase
 {

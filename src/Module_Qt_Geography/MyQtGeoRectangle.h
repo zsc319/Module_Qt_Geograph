@@ -3,7 +3,7 @@
 
 #include <QGeoRectangle>
 #include <QObject>
-#include <Module_Qt_GeoShapes/MyQtGeoShapeBase.h>
+#include "MyQtGeoShapeBase.h"
 
 class MyQtGeoRectangle: public MyQtGeoShapeBase
 {
