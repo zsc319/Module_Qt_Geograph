@@ -16,12 +16,15 @@ class MyQtGeoShapeBase : public QObject
 {
     Q_OBJECT
 public:
-    explicit MyQtGeoShapeBase(qint32 geoShapeObjectID, QObject *parent = 0);
+    explicit MyQtGeoShapeBase(qint32 geoShapeObjectID, QString name,QObject *parent = 0);
     virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 
     qint32 getGeoShapObjectID() const;
     void setGeoShapObjectID(const qint32 &value);
+
+    QString getName() const;
+    void setName(const QString &value);
 
 signals:
 
@@ -29,7 +32,7 @@ public slots:
 
 protected:
     qint32 geoShapObjectID;
-
+    QString name; //Name of this object
 };
 
 #endif // MYQTGEOSHAPEBASE_H

@@ -1,8 +1,8 @@
 #include <QDebug>
 #include "MyQtGeoCircle.h"
 
-MyQtGeoCircle::MyQtGeoCircle(const QGeoCoordinate &center, qreal radiusInMeters, bool *ok, qint32 geoShapeObjectID, QObject *parent)
-    : MyQtGeoShapeBase(geoShapeObjectID,parent)
+MyQtGeoCircle::MyQtGeoCircle(const QGeoCoordinate &center, qreal radiusInMeters, bool *ok, qint32 geoShapeObjectID, QString name, QObject *parent)
+    : MyQtGeoShapeBase(geoShapeObjectID,name,parent)
 {
     geoCircle.setCenter(center);
     geoCircle.setRadius(radiusInMeters);

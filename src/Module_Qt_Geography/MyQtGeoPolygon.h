@@ -12,7 +12,7 @@ public:
     // use x to represent longitude, y to represent latitude.
     // Note the difference from QGeoCoordinate: first parameter is latitude, second parameter is longitude.
     explicit MyQtGeoPolygon(QVector<QPointF> paramGeoPointsInDegreesBeforeTranslate, bool *ok,
-                            qint32 geoShapeObjectID, QObject *parent = 0);
+                            qint32 geoShapeObjectID, QString name,QObject *parent = 0);
     virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 

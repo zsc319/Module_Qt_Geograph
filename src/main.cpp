@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     vectPF.append(QPointF(-160,20));
     vectPF.append(QPointF(-160,60));
     vectPF.append(QPointF(160,60));
-    MyQtGeoPolygon geoPolygon(vectPF,&ok,1);
+    MyQtGeoPolygon geoPolygon(vectPF,&ok,1,"test");
     QGeoCoordinate pFTest(40,179);
     QGeoCoordinate pFTest2(40,-179);
     QGeoCoordinate pFTest3(40,129);
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     vectPF2.append(QPointF(20,-60));
     vectPF2.append(QPointF(60,-60));
     vectPF2.append(QPointF(60,60));
-    MyQtGeoPolygon geoPolygon2(vectPF2,&ok,2);
+    MyQtGeoPolygon geoPolygon2(vectPF2,&ok,2,"test");
     QGeoCoordinate pFTesta(40,20);
     QGeoCoordinate pFTest2a(-40,20);
     QGeoCoordinate pFTest3a(40,70);
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
     QGeoCoordinate coorBottomLeft(10,160);
     QGeoCoordinate coorUpperRight(40,-160);
-    MyQtGeoRectangle *myGeoRect=new MyQtGeoRectangle (coorBottomLeft,coorUpperRight,&ok,3);
+    MyQtGeoRectangle *myGeoRect=new MyQtGeoRectangle (coorBottomLeft,coorUpperRight,&ok,3,"test");
     qDebug()<<myGeoRect->getGeoRectangle().bottomLeft()<<myGeoRect->getGeoRectangle().bottomRight();
     MyQtGeoShapeBase *myShape=myGeoRect;
     QGeoCoordinate pFTestb(20,180);
