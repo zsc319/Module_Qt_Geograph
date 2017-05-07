@@ -105,6 +105,12 @@ bool MyQtGeoPolygon::containsPoint( QGeoCoordinate geoCoordinate, Qt::FillRule f
     return polygonFTranslated.containsPoint(pointF,fillRule);
 }
 
+Enum_MyQtGeoShapeType MyQtGeoPolygon::getGeoShapeType() const
+{
+    return EV_MyQtGeoShapeType_Polygon;
+}
+
+
 bool MyQtGeoPolygon::checkPointFValidity(QPointF &pointF)
 {
     if(pointF.x()<-180||pointF.x()>180||pointF.y()>90||pointF.y()<-90)

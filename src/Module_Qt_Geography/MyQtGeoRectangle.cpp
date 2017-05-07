@@ -16,6 +16,12 @@ bool  MyQtGeoRectangle::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule
     return geoRectangle.contains(geoCoordinate);
 }
 
+Enum_MyQtGeoShapeType MyQtGeoRectangle::getGeoShapeType() const
+{
+    return EV_MyQtGeoShapeType_Rectangle;
+}
+
+
 QGeoRectangle MyQtGeoRectangle::getGeoRectangle() const
 {
     return geoRectangle;

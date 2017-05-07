@@ -16,6 +16,11 @@ bool  MyQtGeoCircle::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fi
     return geoCircle.contains(geoCoordinate);
 }
 
+Enum_MyQtGeoShapeType MyQtGeoCircle::getGeoShapeType() const
+{
+    return EV_MyQtGeoShapeType_Circle;
+}
+
 QGeoCircle MyQtGeoCircle::getGeoCircle() const
 {
     return geoCircle;
