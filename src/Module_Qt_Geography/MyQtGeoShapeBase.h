@@ -16,7 +16,7 @@ class MyQtGeoShapeBase : public QObject
 {
     Q_OBJECT
 public:
-    explicit MyQtGeoShapeBase(QObject *parent = 0);
+    explicit MyQtGeoShapeBase(qint32 geoShapeObjectID, QObject *parent = 0);
     virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 

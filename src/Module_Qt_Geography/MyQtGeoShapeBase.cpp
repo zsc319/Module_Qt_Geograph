@@ -1,8 +1,8 @@
 #include "MyQtGeoShapeBase.h"
 
-MyQtGeoShapeBase::MyQtGeoShapeBase(QObject *parent) : QObject(parent)
+MyQtGeoShapeBase::MyQtGeoShapeBase(qint32 geoShapeObjectID, QObject *parent) : QObject(parent)
 {
-
+    setGeoShapObjectID(geoShapeObjectID);
 }
 
 Enum_MyQtGeoShapeType MyQtGeoShapeBase::getGeoShapeType() const
