@@ -20,6 +20,8 @@ public:
     virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 
+    virtual ~MyQtGeoShapeBase()  {}
+
     qint32 getGeoShapObjectID() const;
     void setGeoShapObjectID(const qint32 &value);
 
