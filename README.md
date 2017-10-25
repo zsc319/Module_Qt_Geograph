@@ -51,6 +51,13 @@ QGeoCircle getGeoCircle() const;
 void setGeoCircle(const QGeoCircle &value);
 ```  
 
+## 扇形类接口  
+```C++  
+explicit  MyQtGeoCircularSector(const QGeoCoordinate &center, const qreal &radiusInMeters,bool *ok,const qint32 &geoShapeObjectID, const QString &name, const double &startDirectionInDegree,const double &endDirectionInDegree,  QObject *parent = 0);
+virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
+virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
+```  
+
 ## Geography接口  
 ```C++
 static  qreal GetDistance(double lat1, double lng1, double lat2, double lng2);
