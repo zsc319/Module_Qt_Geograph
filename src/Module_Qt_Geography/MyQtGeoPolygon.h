@@ -25,7 +25,7 @@ signals:
 
 public slots:
 
-protected:
+private:
     bool setIs180LongitudeCrossedAndCheckPointsValidity();
     bool translatePointsWhenNeeded();
     bool checkPointFValidity(QPointF &pointF);

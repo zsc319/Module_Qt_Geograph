@@ -28,13 +28,13 @@ public:
     QString getName() const;
     void setName(const QString &value);
 
+private:
+    qint32 geoShapObjectID;
+    QString name; //Name of this object
 signals:
 
 public slots:
 
-protected:
-    qint32 geoShapObjectID;
-    QString name; //Name of this object
 };
 
 #endif // MYQTGEOSHAPEBASE_H

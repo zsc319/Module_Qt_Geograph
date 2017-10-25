@@ -17,7 +17,7 @@ public:
     QGeoRectangle getGeoRectangle() const;
     void setGeoRectangle(const QGeoRectangle &value);
 
-protected:
+private:
     QGeoRectangle geoRectangle;
 };
 

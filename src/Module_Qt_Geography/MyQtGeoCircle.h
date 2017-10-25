@@ -17,7 +17,7 @@ public:
     QGeoCircle getGeoCircle() const;
     void setGeoCircle(const QGeoCircle &value);
 
-protected:
+private:
     QGeoCircle geoCircle;
 };
 
