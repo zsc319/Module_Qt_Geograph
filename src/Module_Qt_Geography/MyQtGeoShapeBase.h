@@ -10,9 +10,9 @@ enum Enum_MyQtGeoShapeType
     EV_MyQtGeoShapeType_Circle = 1,
     EV_MyQtGeoShapeType_Rectangle = 2,
     EV_MyQtGeoShapeType_Polygon = 3,
-    EV_RegionType_GeoPoint = 4,
-    EV_RegionType_GeoCircularSector = 5,  //扇形
-    EV_RegionType_GeoAnnularSector = 6  //扇环
+    EV_MyQtGeoShapeType_GeoPoint = 4,
+    EV_MyQtGeoShapeType_GeoCircularSector = 5,  //扇形
+    EV_MyQtGeoShapeType_GeoAnnularSector = 6  //扇环
 };
 
 class MyQtGeoShapeBase : public QObject

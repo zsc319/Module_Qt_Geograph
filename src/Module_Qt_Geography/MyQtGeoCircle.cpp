@@ -12,7 +12,10 @@ MyQtGeoCircle::MyQtGeoCircle(const QGeoCoordinate &center, const qreal &radiusIn
 bool  MyQtGeoCircle::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule)
 {
     if(!geoCoordinate.isValid())
+    {
         qDebug()<<"Error: invalid geoCooridinate:"<<geoCoordinate;
+        return false;
+    }
     return geoCircle.contains(geoCoordinate);
 }
 

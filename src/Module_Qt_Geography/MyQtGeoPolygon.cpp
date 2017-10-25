@@ -96,7 +96,10 @@ bool MyQtGeoPolygon::setIs180LongitudeCrossedAndCheckPointsValidity()
 bool MyQtGeoPolygon::containsPoint( QGeoCoordinate geoCoordinate, Qt::FillRule fillRule)
 {
     if(!geoCoordinate.isValid())
+    {
         qDebug()<<"Error: invalid geoCooridinate:"<<geoCoordinate;
+        return false;
+    }
     QPointF pointF(geoCoordinate.longitude(),geoCoordinate.latitude());
 
     if(pointF.x()<0&&is180LongitudeCrossed)

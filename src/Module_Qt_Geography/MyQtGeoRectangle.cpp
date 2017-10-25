@@ -12,7 +12,10 @@ MyQtGeoRectangle::MyQtGeoRectangle(const QGeoCoordinate &bottomLeft, const QGeoC
 bool  MyQtGeoRectangle::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule)
 {
     if(!geoCoordinate.isValid())
+    {
         qDebug()<<"Error: invalid geoCooridinate:"<<geoCoordinate;
+        return false;
+    }
     return geoRectangle.contains(geoCoordinate);
 }
 
