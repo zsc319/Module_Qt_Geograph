@@ -1,6 +1,6 @@
 #include "MyQtGeoShapeBase.h"
 
-MyQtGeoShapeBase::MyQtGeoShapeBase(qint32 geoShapeObjectID, QString name, QObject *parent) : QObject(parent)
+MyQtGeoShapeBase::MyQtGeoShapeBase(const qint32 &geoShapeObjectID, const QString &name, QObject *parent) : QObject(parent)
 {
     setGeoShapObjectID(geoShapeObjectID);
     setName(name);

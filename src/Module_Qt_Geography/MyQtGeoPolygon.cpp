@@ -2,8 +2,8 @@
 #include <QDebug>
 #include <QLineF>
 
-MyQtGeoPolygon::MyQtGeoPolygon(QVector<QPointF> paramGeoPointsInDegreesBeforeTranslate, bool *ok, qint32 geoShapeObjectID,
-                               QString name, QObject *parent) : MyQtGeoShapeBase(geoShapeObjectID,name,parent)
+MyQtGeoPolygon::MyQtGeoPolygon(const QVector<QPointF> &paramGeoPointsInDegreesBeforeTranslate, bool *ok, const qint32 &geoShapeObjectID,
+                               const QString &name, QObject *parent) : MyQtGeoShapeBase(geoShapeObjectID,name,parent)
 {
     this->geoPointsInDegreesBeforeTranslate=paramGeoPointsInDegreesBeforeTranslate;
     this->geoPointsInDegreeAfterTranslate=paramGeoPointsInDegreesBeforeTranslate;

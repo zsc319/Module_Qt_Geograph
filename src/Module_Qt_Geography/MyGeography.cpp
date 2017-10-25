@@ -17,7 +17,7 @@ MyGeography::~MyGeography()
 //The coordinate values should be specified using the WGS84 datum.
 //For more information on geographical terms see this article on coordinates and another on geodetic systems including WGS84.
 //Azimuth in this context is equivalent to a compass bearing based on true north.
-qreal MyGeography::GetDistance(double lat1, double lng1, double lat2, double lng2)
+qreal MyGeography::GetDistance(const double &lat1, const double &lng1, const double &lat2,const  double &lng2)
 {
     QGeoCoordinate geo1(lat1,lng1),geo2(lat2,lng2);
     if(!geo1.isValid()||!geo2.isValid())
@@ -28,7 +28,7 @@ qreal MyGeography::GetDistance(double lat1, double lng1, double lat2, double lng
     return geo1.distanceTo(geo2);
 }
 
-qreal MyGeography::GetAzimuth(double lat1, double lng1, double lat2, double lng2)
+qreal MyGeography::GetAzimuth(const double &lat1,const  double &lng1, const double &lat2, const double &lng2)
 {
     QGeoCoordinate geo1(lat1,lng1),geo2(lat2,lng2);
     if(!geo1.isValid()||!geo2.isValid())
@@ -44,7 +44,7 @@ qreal MyGeography::GetAzimuth(double lat1, double lng1, double lat2, double lng2
  * 如果返回值小于0，则没有日出。如果返回值大于24，则始终是日出状态
  ***/
 
-float  MyGeography::calculateSunriseAsUTCHour(int year,int month,int day,float lat, float lng)
+float  MyGeography::calculateSunriseAsUTCHour(const int &year, int &month, int &day, float &lat, float &lng)
 {
     /*
     localOffset will be <0 for western hemisphere and >0 for eastern hemisphere
@@ -119,7 +119,7 @@ float  MyGeography::calculateSunriseAsUTCHour(int year,int month,int day,float l
  *
  *
  * ***/
-float MyGeography::calculateSunsetAsUTCHour(int year, int month, int day, float lat, float lng)
+float MyGeography::calculateSunsetAsUTCHour(const int &year, const int &month, const int &day, const float &lat, const float &lng)
 {
     /*
     localOffset will be <0 for western hemisphere and >0 for eastern hemisphere

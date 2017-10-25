@@ -9,14 +9,17 @@ enum Enum_MyQtGeoShapeType
     EV_MyQtGeoShapeType_Base = 0,
     EV_MyQtGeoShapeType_Circle = 1,
     EV_MyQtGeoShapeType_Rectangle = 2,
-    EV_MyQtGeoShapeType_Polygon = 3
+    EV_MyQtGeoShapeType_Polygon = 3,
+    EV_RegionType_GeoPoint = 4,
+    EV_RegionType_GeoCircularSector = 5,  //扇形
+    EV_RegionType_GeoAnnularSector = 6  //扇环
 };
 
 class MyQtGeoShapeBase : public QObject
 {
     Q_OBJECT
 public:
-    explicit MyQtGeoShapeBase(qint32 geoShapeObjectID, QString name,QObject *parent = 0);
+    explicit MyQtGeoShapeBase(const qint32 &geoShapeObjectID,const QString &name,QObject *parent = 0);
     virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 

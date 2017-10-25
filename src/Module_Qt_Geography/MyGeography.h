@@ -12,10 +12,10 @@ class MyGeography : public QObject
 public:
     explicit MyGeography(QObject *parent = 0);
     ~MyGeography();
-    static  qreal GetDistance(double lat1, double lng1, double lat2, double lng2);
-    static  qreal GetAzimuth(double lat1, double lng1, double lat2, double lng2);
-    static  float calculateSunriseAsUTCHour(int year, int month, int day, float lat, float lng);
-    static  float calculateSunsetAsUTCHour(int year, int month, int day, float lat, float lng);
+    static  qreal GetDistance(const double &lat1, const double &lng1, const double &lat2,const  double &lng2);
+    static  qreal GetAzimuth(const double &lat1,const  double &lng1, const double &lat2, const double &lng2);
+    static  float calculateSunriseAsUTCHour(const int &year, int &month, int &day, float &lat, float &lng);
+    static  float calculateSunsetAsUTCHour(const int &year,const  int &month, const int &day,const  float &lat,const  float &lng);
 
 signals:
 
