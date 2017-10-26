@@ -1,4 +1,9 @@
 # Qt_Geography  
+
+项目类关系图见下：
+![输入图片说明](https://gitee.com/uploads/images/2017/1026/111518_2c3fa68d_854788.png "屏幕截图.png")
+
+
 ## 功能1:地理多边形  
 封装Qt的QGeoCircle、QGeoRectangle和QPolygonF类，成为地理多边形、地理圆形和地理矩形，共同的基类为MyQtGeoShapeBase。  
 提供一个常用功能：查询某个坐标是否在某个地理形状内。  
@@ -54,6 +59,16 @@ void setGeoCircle(const QGeoCircle &value);
 ## 扇形类接口  
 ```C++  
 explicit  MyQtGeoCircularSector(const QGeoCoordinate &center, const qreal &radiusInMeters,bool *ok,const qint32 &geoShapeObjectID, const QString &name, const double &startDirectionInDegree,const double &endDirectionInDegree,  QObject *parent = 0);
+virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
+virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
+```  
+
+## 扇环类接口  
+```C++  
+explicit  MyQtGeoAnnularSector(const QGeoCoordinate &center, const qreal &radiusInMeters,bool *ok,const qint32 
+&geoShapeObjectID, const QString &name, const double &startDirectionInDegree, const double &endDirectionInDegree,
+ const float &radiusInnerInKM, QObject *parent = 0);
+virtual ~MyQtGeoAnnularSector() {}
 virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
 virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 ```  
