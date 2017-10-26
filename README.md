@@ -68,7 +68,6 @@ virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 explicit  MyQtGeoAnnularSector(const QGeoCoordinate &center, const qreal &radiusInMeters,bool *ok,const qint32 
 &geoShapeObjectID, const QString &name, const double &startDirectionInDegree, const double &endDirectionInDegree,
  const float &radiusInnerInKM, QObject *parent = 0);
-virtual ~MyQtGeoAnnularSector() {}
 virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
 virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 ```  
