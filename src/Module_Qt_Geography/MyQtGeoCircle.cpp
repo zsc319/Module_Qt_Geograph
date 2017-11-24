@@ -9,7 +9,7 @@ MyQtGeoCircle::MyQtGeoCircle(const QGeoCoordinate &center, const qreal &radiusIn
     *ok=geoCircle.isValid();
 }
 
-bool  MyQtGeoCircle::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule)
+bool  MyQtGeoCircle::containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule)
 {
     if(!geoCoordinate.isValid())
     {
@@ -17,6 +17,14 @@ bool  MyQtGeoCircle::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fi
         return false;
     }
     return geoCircle.contains(geoCoordinate);
+}
+
+qreal MyQtGeoCircle::distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)//To be implemented
+{
+
+
+
+    return -1;
 }
 
 Enum_MyQtGeoShapeType MyQtGeoCircle::getGeoShapeType() const

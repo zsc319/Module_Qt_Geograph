@@ -9,7 +9,7 @@ MyQtGeoRectangle::MyQtGeoRectangle(const QGeoCoordinate &bottomLeft, const QGeoC
     *ok=geoRectangle.isValid();
 }
 
-bool  MyQtGeoRectangle::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule)
+bool  MyQtGeoRectangle::containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule)
 {
     if(!geoCoordinate.isValid())
     {
@@ -17,6 +17,14 @@ bool  MyQtGeoRectangle::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule
         return false;
     }
     return geoRectangle.contains(geoCoordinate);
+}
+
+qreal MyQtGeoRectangle::distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)//To be implemented
+{
+
+
+
+    return -1;
 }
 
 Enum_MyQtGeoShapeType MyQtGeoRectangle::getGeoShapeType() const

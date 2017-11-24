@@ -12,7 +12,10 @@ enum Enum_MyQtGeoShapeType
     EV_MyQtGeoShapeType_Polygon = 3,
     EV_MyQtGeoShapeType_GeoPoint = 4,
     EV_MyQtGeoShapeType_GeoCircularSector = 5,  //扇形
-    EV_MyQtGeoShapeType_GeoAnnularSector = 6  //扇环
+    EV_MyQtGeoShapeType_GeoAnnularSector = 6,  //扇环
+
+    EV_MyQtGeoShapeType_LineSegment =15  //线段
+
 };
 
 class MyQtGeoShapeBase : public QObject
@@ -20,7 +23,9 @@ class MyQtGeoShapeBase : public QObject
     Q_OBJECT
 public:
     explicit MyQtGeoShapeBase(const qint32 &geoShapeObjectID,const QString &name,QObject *parent = 0);
-    virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
+    virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
+    virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)=0;
+
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 
     virtual ~MyQtGeoShapeBase()  {}

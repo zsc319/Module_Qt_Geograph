@@ -13,9 +13,11 @@ public:
     // Note the difference from QGeoCoordinate: first parameter is latitude, second parameter is longitude.
     explicit MyQtGeoPolygon(const QVector<QPointF> &paramGeoPointsInDegreesBeforeTranslate, bool *ok,
                          const   qint32 &geoShapeObjectID, const QString &name, QObject *parent = 0);
-    virtual ~MyQtGeoPolygon() {}
+    virtual ~MyQtGeoPolygon() {}    
 
-    virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
+    virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
+    virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint); //To be implemented
+
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 
     QPolygonF getPolygonFTranslated() const;

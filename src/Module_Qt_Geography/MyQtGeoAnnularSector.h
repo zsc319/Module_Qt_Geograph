@@ -12,8 +12,9 @@ public:
                                     const double &endDirectionInDegree, const float &radiusInnerInKM, QObject *parent = 0);
 
     virtual ~MyQtGeoAnnularSector() {}
-    virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
+    virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
+    virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint); //To be implemented
 
     float getRadiusInnerInKM() const;
     void setRadiusInnerInKM(float value);

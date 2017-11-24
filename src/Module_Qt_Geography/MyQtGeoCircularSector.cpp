@@ -11,7 +11,7 @@ MyQtGeoCircularSector::MyQtGeoCircularSector(const QGeoCoordinate &center, const
 
 }
 
-bool MyQtGeoCircularSector::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule)
+bool MyQtGeoCircularSector::containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule)
 {
     if(!geoCoordinate.isValid())
         qDebug()<<"Error: invalid geoCooridinate:"<<geoCoordinate;
@@ -24,6 +24,14 @@ bool MyQtGeoCircularSector::containsPoint(QGeoCoordinate geoCoordinate, Qt::Fill
         return directionFromCenre>=startDirectionInDegree&&directionFromCenre<=endDirectionInDegree;
     else //0 degree is crossed
         return directionFromCenre>=startDirectionInDegree || directionFromCenre<=endDirectionInDegree;
+}
+
+qreal MyQtGeoCircularSector::distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)//To be implemented
+{
+
+
+
+    return -1;
 }
 
 Enum_MyQtGeoShapeType MyQtGeoCircularSector::getGeoShapeType() const

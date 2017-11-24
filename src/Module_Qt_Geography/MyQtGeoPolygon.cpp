@@ -93,7 +93,7 @@ bool MyQtGeoPolygon::setIs180LongitudeCrossedAndCheckPointsValidity()
     return true;
 }
 
-bool MyQtGeoPolygon::containsPoint( QGeoCoordinate geoCoordinate, Qt::FillRule fillRule)
+bool MyQtGeoPolygon::containsPoint( const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule)
 {
     if(!geoCoordinate.isValid())
     {
@@ -107,6 +107,15 @@ bool MyQtGeoPolygon::containsPoint( QGeoCoordinate geoCoordinate, Qt::FillRule f
 
     return polygonFTranslated.containsPoint(pointF,fillRule);
 }
+
+qreal MyQtGeoPolygon::distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)//To be implemented
+{
+
+
+
+    return -1;
+}
+
 
 Enum_MyQtGeoShapeType MyQtGeoPolygon::getGeoShapeType() const
 {

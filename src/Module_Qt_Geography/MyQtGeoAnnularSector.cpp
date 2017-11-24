@@ -8,7 +8,7 @@ MyQtGeoAnnularSector::MyQtGeoAnnularSector(const QGeoCoordinate &center, const q
     this->radiusInnerInKM=radiusInnerInKM;
 }
 
-bool MyQtGeoAnnularSector::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule)
+bool MyQtGeoAnnularSector::containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule)
 {
     if(!MyQtGeoCircularSector::containsPoint(geoCoordinate)) //Judge if inside the bigger circular sector
         return false;
@@ -19,6 +19,15 @@ bool MyQtGeoAnnularSector::containsPoint(QGeoCoordinate geoCoordinate, Qt::FillR
     else //inside the annular
         return true;
 }
+
+qreal MyQtGeoAnnularSector::distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)//To be implemented
+{
+
+
+
+    return -1;
+}
+
 
 Enum_MyQtGeoShapeType MyQtGeoAnnularSector::getGeoShapeType() const
 {

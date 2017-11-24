@@ -14,7 +14,9 @@ public:
                                     const double &endDirectionInDegree,  QObject *parent = 0);
 
     virtual ~MyQtGeoCircularSector() {}
-    virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
+    virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
+    virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint); //To be implemented
+
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 
     double getStartDirectionInDegree() const;
