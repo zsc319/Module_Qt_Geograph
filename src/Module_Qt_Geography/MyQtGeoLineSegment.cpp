@@ -14,21 +14,22 @@ MyQtGeoLineSegment::MyQtGeoLineSegment(const QGeoCoordinate &geoCoordStart, cons
 
 qreal MyQtGeoLineSegment::distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)//To be implemented
 {
-    if(!geoCoordPoint.isValid())
+    if(!geoCoordPoint.isValid()||!isValid)
         return -1;
 
     qreal distanceToStartPoint=geoCoordPoint.distanceTo(geoCoordStart) ;
     qreal distanceToEndPoint=geoCoordPoint.distanceTo(geoCoordEnd) ;
 
-    c=getDistanceBtwP(PAy,PAx,PCy,PCx);//经纬坐标系中求两点的距离公式
-    if(b*b>=c*c+a*a)return c;
-    if(c*c>=b*b+a*a)return b;
-    double l=(a+b+c)/2;     //周长的一半
-    double s=sqrt(l*(l-a)*(l-b)*(l-c));  //海伦公式求面积
-    return 2*s/a;
+    //obtuse
+    if(distanceToStartPoint*distanceToStartPoint>=(distanceToEndPoint*distanceToEndPoint+lineLength*lineLength) )
+        return distanceToEndPoint;
+    //obtuse
+    if(distanceToEndPoint*distanceToEndPoint>=(distanceToStartPoint*distanceToStartPoint+lineLength*lineLength) )
+        return distanceToStartPoint;
 
-
-    return -1;
+    double halfGirth=(lineLength+distanceToStartPoint+distanceToEndPoint)/2;     //周长的一半
+    double area=sqrt(halfGirth*(halfGirth-lineLength)*(halfGirth-distanceToStartPoint)*(halfGirth-distanceToEndPoint));  //海伦公式求面积
+    return 2*area/lineLength;
 }
 
 Enum_MyQtGeoShapeType MyQtGeoLineSegment::getGeoShapeType() const
