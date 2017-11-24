@@ -1,7 +1,7 @@
 # Qt_Geography  
 
 项目类关系图见下：
-![输入图片说明](https://gitee.com/uploads/images/2017/1026/111518_2c3fa68d_854788.png "屏幕截图.png")
+![类图](https://gitee.com/uploads/images/2017/1124/144202_0f32227e_854788.jpeg "软件项目类图.jpg")
 
 
 ## 功能1:地理多边形  
@@ -28,6 +28,7 @@
 virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
 qint32 getGeoShapObjectID() const;
 void setGeoShapObjectID(const qint32 &value);  
+virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)=0;
 ```  
 ## 多边形类接口  
 ```C++  
@@ -69,8 +70,19 @@ explicit  MyQtGeoAnnularSector(const QGeoCoordinate &center, const qreal &radius
 &geoShapeObjectID, const QString &name, const double &startDirectionInDegree, const double &endDirectionInDegree,
  const float &radiusInnerInKM, QObject *parent = 0);
 virtual bool containsPoint(QGeoCoordinate geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
-virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
+virtual Enum_MyQtGeoShapeType getGeoShapeType() const;  
 ```  
+
+## 线段类接口  
+```C++
+explicit MyQtGeoLineSegment(const QGeoCoordinate &geoCoordStart, const QGeoCoordinate &geoCoordEnd, bool *ok,
+                                const   qint32 &geoShapeObjectID, const QString &name, QObject *parent = 0);
+virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill)=0 ; //To be implemented
+virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint); //To be implemented
+virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
+qreal getLineLength() const;
+```
+
 
 ## Geography接口  
 ```C++
