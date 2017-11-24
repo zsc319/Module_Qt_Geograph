@@ -12,21 +12,21 @@ MyQtGeoPolygon::MyQtGeoPolygon(const QVector<QPointF> &paramGeoPointsInDegreesBe
     if(  !polygonFTest.isClosed())
     {
         qDebug()<<"Error: polygon is not closed! Make sure that starting point and ending point are the same!";
-       *ok=false;
+       *ok=isValid= false;
         return;
     }
     if(polygonFTest.size()<3)
     {
         qDebug()<<"Error: There are less than 3 points!";
-        *ok=false;
+        *ok=isValid= false;
         return;
     }
 
     if(setIs180LongitudeCrossedAndCheckPointsValidity()&&translatePointsWhenNeeded())
-        *ok=true;
+        *ok=isValid= true;
     else
     {
-        *ok=false;
+        *ok=isValid= false;
         return;
     }
 

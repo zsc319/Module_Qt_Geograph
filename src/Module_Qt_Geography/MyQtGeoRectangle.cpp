@@ -6,7 +6,7 @@ MyQtGeoRectangle::MyQtGeoRectangle(const QGeoCoordinate &bottomLeft, const QGeoC
 {
     geoRectangle.setBottomLeft(bottomLeft);
     geoRectangle.setTopRight(topRight);
-    *ok=geoRectangle.isValid();
+    *ok=isValid= geoRectangle.isValid();
 }
 
 bool  MyQtGeoRectangle::containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule)

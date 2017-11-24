@@ -6,8 +6,13 @@ MyQtGeoCircle::MyQtGeoCircle(const QGeoCoordinate &center, const qreal &radiusIn
 {
     geoCircle.setCenter(center);
     geoCircle.setRadius(radiusInMeters);
-    *ok=geoCircle.isValid();
+    if(geoCircle.isValid())
+        *ok=isValid=true;
+    else
+        *ok=isValid=false;
 }
+
+
 
 bool  MyQtGeoCircle::containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule)
 {

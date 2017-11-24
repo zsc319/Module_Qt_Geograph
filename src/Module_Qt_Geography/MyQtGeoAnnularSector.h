@@ -7,20 +7,21 @@
 class MyQtGeoAnnularSector : public MyQtGeoCircularSector
 {
 public:
-    explicit  MyQtGeoAnnularSector(const QGeoCoordinate &center, const qreal &radiusInMeters,bool *ok,
+    explicit  MyQtGeoAnnularSector(const QGeoCoordinate &center, const qreal &radiusInMeters, bool *ok,
                                     const qint32 &geoShapeObjectID, const QString &name, const double &startDirectionInDegree,
-                                    const double &endDirectionInDegree, const float &radiusInnerInKM, QObject *parent = 0);
+                                    const double &endDirectionInDegree, const float &radiusInnerInMeters, QObject *parent = 0);
 
     virtual ~MyQtGeoAnnularSector() {}
+
     virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
     virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint); //To be implemented
 
-    float getRadiusInnerInKM() const;
-    void setRadiusInnerInKM(float value);
+    float getRadiusInnerInMeters() const;
+    void setRadiusInnerInMeters(float value);
 
 private:
-    float radiusInnerInKM;
+    float radiusInnerInMeters;
 };
 
 #endif // MYQTGEOANNULARSECTOR_H

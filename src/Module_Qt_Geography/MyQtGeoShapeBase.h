@@ -25,7 +25,6 @@ public:
     explicit MyQtGeoShapeBase(const qint32 &geoShapeObjectID,const QString &name,QObject *parent = 0);
     virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
     virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)=0;
-
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 
     virtual ~MyQtGeoShapeBase()  {}
@@ -36,9 +35,11 @@ public:
     QString getName() const;
     void setName(const QString &value);
 
+    bool isValid;
 private:
     qint32 geoShapObjectID;
     QString name; //Name of this object
+
 signals:
 
 public slots:

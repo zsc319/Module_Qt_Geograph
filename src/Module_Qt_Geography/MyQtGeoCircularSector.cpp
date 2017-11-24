@@ -8,7 +8,10 @@ MyQtGeoCircularSector::MyQtGeoCircularSector(const QGeoCoordinate &center, const
 {
     this->startDirectionInDegree=startDirectionInDegree;
     this->endDirectionInDegree=endDirectionInDegree;
-
+    if(center.isValid()&&radiusInMeters>=0)
+        *ok=isValid=true;
+    else
+        *ok=isValid=false;
 }
 
 bool MyQtGeoCircularSector::containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule)

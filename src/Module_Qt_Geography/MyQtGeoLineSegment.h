@@ -18,8 +18,11 @@ public:
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 
 
+    qreal getLineLength() const;
+
 private:
     QGeoCoordinate geoCoordStart, geoCoordEnd;
+    qreal lineLength;
 
 };
 
