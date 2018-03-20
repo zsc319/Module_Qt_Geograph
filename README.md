@@ -1,8 +1,7 @@
 # Qt_Geography  
 
 项目类关系图见下：
-![类图](https://gitee.com/uploads/images/2017/1124/150703_68026d38_854788.jpeg "软件项目类图.jpg")
-
+![类图](https://gitee.com/uploads/images/2018/0320/163611_ec34c173_854788.jpeg "软件项目类图.jpg")
 
 ## 功能1:地理多边形  
 封装Qt的QGeoCircle、QGeoRectangle和QPolygonF类，成为地理多边形、地理圆形和地理矩形，共同的基类为MyQtGeoShapeBase。  
