@@ -13,6 +13,7 @@ enum Enum_MyQtGeoShapeType
     EV_MyQtGeoShapeType_GeoPoint = 4,
     EV_MyQtGeoShapeType_GeoCircularSector = 5,  //扇形
     EV_MyQtGeoShapeType_GeoAnnularSector = 6,  //扇环
+    EV_MyQtGeoShapeType_PolyLineSegment = 7,  //折线
 
     EV_MyQtGeoShapeType_LineSegment =15  //线段
 

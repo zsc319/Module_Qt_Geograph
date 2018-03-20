@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     Module_Qt_Geography/MyGeography.cpp \
     Module_Qt_Geography/MyQtGeoCircularSector.cpp \
     Module_Qt_Geography/MyQtGeoAnnularSector.cpp \
-    Module_Qt_Geography/MyQtGeoLineSegment.cpp
+    Module_Qt_Geography/MyQtGeoLineSegment.cpp \
+    Module_Qt_Geography/MyQtGeoPolyLineSegment.cpp
 
 HEADERS += \
     Module_Qt_Geography/MyQtGeoCircle.h \
@@ -26,4 +27,5 @@ HEADERS += \
     Module_Qt_Geography/MyGeography.h \
     Module_Qt_Geography/MyQtGeoCircularSector.h \
     Module_Qt_Geography/MyQtGeoAnnularSector.h \
-    Module_Qt_Geography/MyQtGeoLineSegment.h
+    Module_Qt_Geography/MyQtGeoLineSegment.h \
+    Module_Qt_Geography/MyQtGeoPolyLineSegment.h
