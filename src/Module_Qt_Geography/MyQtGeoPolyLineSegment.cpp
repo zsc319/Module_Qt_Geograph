@@ -38,3 +38,15 @@ void MyQtGeoPolyLineSegment::clearGeoCoord()
     vectGeoCoords.clear();
 }
 
+//To be implemented
+bool MyQtGeoPolyLineSegment::containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule)
+{
+    return false;
+}
+
+//To be implemented
+qreal MyQtGeoPolyLineSegment::distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)
+{
+    return 0;
+}
+

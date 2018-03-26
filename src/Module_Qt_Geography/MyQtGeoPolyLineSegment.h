@@ -21,8 +21,8 @@ public:
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
 
     virtual ~MyQtGeoPolyLineSegment(){}
-    virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill)=0 ; //To be implemented
-    virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)=0; //To be implemented
+    virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ; //To be implemented
+    virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint); //To be implemented
 private:
     QVector <QGeoCoordinate*> vectGeoCoords;
 };
