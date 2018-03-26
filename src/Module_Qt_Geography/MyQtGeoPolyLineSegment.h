@@ -11,6 +11,8 @@ class MyQtGeoPolyLineSegment : public MyQtGeoShapeBase
 public:
     explicit MyQtGeoPolyLineSegment(const QVector<QGeoCoordinate *> &vectGeoCoordParam, bool *ok,
                                 const   qint32 &geoShapeObjectID, const QString &name, QObject *parent = 0);
+   QVector <QGeoCoordinate*> getVectGeoCoords() const;
+
     void appendOneGeoCoord(QGeoCoordinate *newCoordinate);
     void removeFirstGeoCoord();
     void removeLastGeoCoord();

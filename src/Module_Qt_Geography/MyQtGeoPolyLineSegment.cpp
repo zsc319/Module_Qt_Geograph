@@ -13,6 +13,11 @@ Enum_MyQtGeoShapeType MyQtGeoPolyLineSegment::getGeoShapeType() const
     return EV_MyQtGeoShapeType_PolyLineSegment;
 }
 
+QVector <QGeoCoordinate*> MyQtGeoPolyLineSegment::getVectGeoCoords() const
+{
+    return vectGeoCoords;
+}
+
 void MyQtGeoPolyLineSegment::appendOneGeoCoord(QGeoCoordinate *newCoordinate)
 {
     vectGeoCoords.append(newCoordinate);
