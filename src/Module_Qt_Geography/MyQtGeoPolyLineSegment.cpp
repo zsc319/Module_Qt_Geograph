@@ -1,8 +1,8 @@
 #include "MyQtGeoPolyLineSegment.h"
 #include <QVector>
 MyQtGeoPolyLineSegment::MyQtGeoPolyLineSegment(const QVector <QGeoCoordinate*> &vectGeoCoordParam,
-             bool *ok, const   qint32 &geoShapeObjectID, const QString &name, QObject *parent) :
-            MyQtGeoShapeBase(geoShapeObjectID,name,parent)
+             bool *ok, const   qint32 &geoShapeObjectID, const QString &name, QObject *parent, const quint32 &utcTime) :
+            MyQtGeoShapeBase(geoShapeObjectID,name,parent, utcTime)
 {
     this->vectGeoCoords=vectGeoCoordParam;
     *ok=isValid= true;

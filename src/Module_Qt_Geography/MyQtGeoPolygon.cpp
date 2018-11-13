@@ -3,7 +3,7 @@
 #include <QLineF>
 
 MyQtGeoPolygon::MyQtGeoPolygon(const QVector<QPointF> &paramGeoPointsInDegreesBeforeTranslate, bool *ok, const qint32 &geoShapeObjectID,
-                               const QString &name, QObject *parent) : MyQtGeoShapeBase(geoShapeObjectID,name,parent)
+                               const QString &name, QObject *parent, const quint32 &utcTime) : MyQtGeoShapeBase(geoShapeObjectID,name,parent, utcTime)
 {
     this->geoPointsInDegreesBeforeTranslate=paramGeoPointsInDegreesBeforeTranslate;
     this->geoPointsInDegreeAfterTranslate=paramGeoPointsInDegreesBeforeTranslate;

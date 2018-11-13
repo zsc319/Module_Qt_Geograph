@@ -2,7 +2,7 @@
 #include "MyQtGeoCircle.h"
 
 MyQtGeoCircle::MyQtGeoCircle(const QGeoCoordinate &center, const qreal &radiusInMeters, bool *ok, const qint32 &geoShapeObjectID,
-                             const QString &name, QObject *parent)    : MyQtGeoShapeBase(geoShapeObjectID,name,parent)
+                             const QString &name, QObject *parent, const quint32 &utcTime)    : MyQtGeoShapeBase(geoShapeObjectID,name,parent, utcTime)
 {
     geoCircle.setCenter(center);
     geoCircle.setRadius(radiusInMeters);

@@ -11,7 +11,7 @@ class MyQtGeoCircularSector : public MyQtGeoCircle
 public:
     explicit  MyQtGeoCircularSector(const QGeoCoordinate &center, const qreal &radiusInMeters,bool *ok,
                                     const qint32 &geoShapeObjectID, const QString &name, const double &startDirectionInDegree,
-                                    const double &endDirectionInDegree,  QObject *parent = 0);
+                                    const double &endDirectionInDegree,  QObject *parent = 0, const quint32 &utcTime=0);
 
     virtual ~MyQtGeoCircularSector() {}
     virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) ;

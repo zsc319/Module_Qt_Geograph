@@ -9,7 +9,7 @@ class MyQtGeoAnnularSector : public MyQtGeoCircularSector
 public:
     explicit  MyQtGeoAnnularSector(const QGeoCoordinate &center, const qreal &radiusInMeters, bool *ok,
                                     const qint32 &geoShapeObjectID, const QString &name, const double &startDirectionInDegree,
-                                    const double &endDirectionInDegree, const float &radiusInnerInMeters, QObject *parent = 0);
+                                    const double &endDirectionInDegree, const float &radiusInnerInMeters, QObject *parent = 0, const quint32 &utcTime=0);
 
     virtual ~MyQtGeoAnnularSector() {}
 

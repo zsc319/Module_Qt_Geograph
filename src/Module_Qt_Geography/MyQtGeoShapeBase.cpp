@@ -1,9 +1,10 @@
 #include "MyQtGeoShapeBase.h"
 
-MyQtGeoShapeBase::MyQtGeoShapeBase(const qint32 &geoShapeObjectID, const QString &name, QObject *parent) : QObject(parent)
+MyQtGeoShapeBase::MyQtGeoShapeBase(const qint32 &geoShapeObjectID, const QString &name, QObject *parent, const quint32 &utcTime) : QObject(parent)
 {
     setGeoShapObjectID(geoShapeObjectID);
     setName(name);
+    setRecordUTCTime(utcTime);
 }
 
 Enum_MyQtGeoShapeType MyQtGeoShapeBase::getGeoShapeType() const
@@ -29,4 +30,14 @@ QString MyQtGeoShapeBase::getName() const
 void MyQtGeoShapeBase::setName(const QString &value)
 {
     name = value;
+}
+
+quint32 MyQtGeoShapeBase::getRecordUTCTime() const
+{
+    return recordUTCTime;
+}
+
+void MyQtGeoShapeBase::setRecordUTCTime(const quint32 &value)
+{
+    recordUTCTime = value;
 }

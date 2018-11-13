@@ -1,7 +1,8 @@
 #include "MyQtGeoLineSegment.h"
 
 MyQtGeoLineSegment::MyQtGeoLineSegment(const QGeoCoordinate &geoCoordStart, const QGeoCoordinate &geoCoordEnd, bool *ok,
-                       const   qint32 &geoShapeObjectID, const QString &name, QObject *parent) : MyQtGeoShapeBase(geoShapeObjectID,name,parent)
+                       const   qint32 &geoShapeObjectID, const QString &name, QObject *parent, const quint32 &utcTime)
+                : MyQtGeoShapeBase(geoShapeObjectID,name,parent, utcTime)
 {
     this->geoCoordStart=geoCoordStart;
     this->geoCoordEnd=geoCoordEnd;

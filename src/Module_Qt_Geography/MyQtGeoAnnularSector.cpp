@@ -2,8 +2,8 @@
 
 MyQtGeoAnnularSector::MyQtGeoAnnularSector(const QGeoCoordinate &center, const qreal &radiusInMeters, bool *ok,
           const qint32 &geoShapeObjectID, const QString &name, const double &startDirectionInDegree,
-            const double &endDirectionInDegree, const float &radiusInnerInMeters, QObject *parent)
-        : MyQtGeoCircularSector(center, radiusInMeters,ok,  geoShapeObjectID,name, startDirectionInDegree, endDirectionInDegree,  parent)
+            const double &endDirectionInDegree, const float &radiusInnerInMeters, QObject *parent, const quint32 &utcTime)
+        : MyQtGeoCircularSector(center, radiusInMeters,ok,  geoShapeObjectID,name, startDirectionInDegree, endDirectionInDegree,  parent, utcTime)
 {
     this->radiusInnerInMeters=radiusInnerInMeters;
     if(center.isValid()&&radiusInMeters>=0&&radiusInnerInMeters>=0&&radiusInMeters>=radiusInnerInMeters)

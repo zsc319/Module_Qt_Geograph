@@ -10,7 +10,7 @@ class MyQtGeoPolyLineSegment : public MyQtGeoShapeBase
     Q_OBJECT
 public:
     explicit MyQtGeoPolyLineSegment(const QVector<QGeoCoordinate *> &vectGeoCoordParam, bool *ok,
-                                const   qint32 &geoShapeObjectID, const QString &name, QObject *parent = 0);
+                                const   qint32 &geoShapeObjectID, const QString &name, QObject *parent = 0, const quint32 &utcTime=0);
    QVector <QGeoCoordinate*> getVectGeoCoords() const;
 
     void appendOneGeoCoord(QGeoCoordinate *newCoordinate);

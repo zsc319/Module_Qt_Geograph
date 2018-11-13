@@ -2,7 +2,8 @@
 #include <QDebug>
 
 MyQtGeoRectangle::MyQtGeoRectangle(const QGeoCoordinate &bottomLeft, const QGeoCoordinate &topRight,
-                     bool *ok, const qint32 &geoShapeObjectID, const QString &name, QObject *parent)   : MyQtGeoShapeBase(geoShapeObjectID,name,parent)
+                     bool *ok, const qint32 &geoShapeObjectID, const QString &name, QObject *parent, const quint32 &utcTime)
+                    : MyQtGeoShapeBase(geoShapeObjectID,name,parent, utcTime)
 {
     geoRectangle.setBottomLeft(bottomLeft);
     geoRectangle.setTopRight(topRight);

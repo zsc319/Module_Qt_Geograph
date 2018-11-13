@@ -23,7 +23,7 @@ class MyQtGeoShapeBase : public QObject
 {
     Q_OBJECT
 public:
-    explicit MyQtGeoShapeBase(const qint32 &geoShapeObjectID,const QString &name,QObject *parent = 0);
+    explicit MyQtGeoShapeBase(const qint32 &geoShapeObjectID,const QString &name,QObject *parent = 0, const quint32 &utcTime=0);
     virtual bool containsPoint(const QGeoCoordinate &geoCoordinate, Qt::FillRule fillRule=Qt::OddEvenFill) =0;
     virtual qreal distanceFromPointInMeters(const QGeoCoordinate &geoCoordPoint)=0;
     virtual Enum_MyQtGeoShapeType getGeoShapeType() const;
@@ -37,9 +37,13 @@ public:
     void setName(const QString &value);
 
     bool isValid;
+    quint32 getRecordUTCTime() const;
+    void setRecordUTCTime(const quint32 &value);
+
 private:
     qint32 geoShapObjectID;
     QString name; //Name of this object
+    quint32 recordUTCTime;
 
 signals:
 
